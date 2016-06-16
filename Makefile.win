@@ -1,0 +1,37 @@
+# Project: mysqlDocumentator
+# Makefile created by Dev-C++ 5.8.3
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = databaseReader.o documentationMaker.o TableStructure.o main.o
+LINKOBJ  = databaseReader.o documentationMaker.o TableStructure.o main.o
+LIBS     = -L"D:/Orwell/Dev-Cpp/MinGW32/lib" -L"D:/Orwell/Dev-Cpp/MinGW32/mingw32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"D:/Orwell/Dev-Cpp/MinGW32/include" -I"D:/Orwell/Dev-Cpp/MinGW32/mingw32/include" -I"D:/Orwell/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include"
+CXXINCS  = -I"D:/Orwell/Dev-Cpp/MinGW32/include" -I"D:/Orwell/Dev-Cpp/MinGW32/mingw32/include" -I"D:/Orwell/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include" -I"D:/Orwell/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include/c++" -I"D:/Orwell/Dev-Cpp/include" -I""C:/Program Files/MySQL/Connector.C++ 1.1/include""
+BIN      = mysqlDocumentator.exe
+CXXFLAGS = $(CXXINCS) -std=c++11 -g3
+CFLAGS   = $(INCS) -std=c++11 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+databaseReader.o: databaseReader.cpp
+	$(CPP) -c databaseReader.cpp -o databaseReader.o $(CXXFLAGS)
+
+documentationMaker.o: documentationMaker.cpp
+	$(CPP) -c documentationMaker.cpp -o documentationMaker.o $(CXXFLAGS)
+
+TableStructure.o: TableStructure.cpp
+	$(CPP) -c TableStructure.cpp -o TableStructure.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
